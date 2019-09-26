@@ -1,0 +1,5 @@
+---
+# This role contains common plays that will run on all nodes.
+
+- name: Create the repository for EPEL
+  copy: src=epel.repo dest=/etc/yum.repos.d/epel.repo
