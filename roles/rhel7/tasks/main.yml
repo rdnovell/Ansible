@@ -2,7 +2,7 @@
 
 # Ejemplo de como usar command
   - name: Ejecutar un comando en un host remoto.
-    command: echo "test command" >> /tmp/command.txt
+    command: getenforce
 
 # Ejemplo de como usar shell
   - name: Ejecutar un comando en una shell remota.
