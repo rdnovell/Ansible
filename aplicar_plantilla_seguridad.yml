@@ -3,7 +3,6 @@
 
 - name: aplicar plantilla de seguridad
   hosts: all
-  remote_user: root
 
   roles:
     - rhel7
