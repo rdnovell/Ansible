@@ -2,7 +2,7 @@
 
 # Ejemplo de como usar command
   - name: Ejecutar un comando en un host remoto.
-    command: getenforce
+    command: /usr/sbin/getenforce
 
 # Ejemplo de como usar shell
   - name: Ejecutar un comando en una shell remota.
