@@ -2,7 +2,7 @@
 # Este playbook aplica la plantilla de seguridad.
 
 - name: aplicar plantilla de seguridad
-  hosts: 
+  hosts: all
   remote_user: root
 
   roles:
