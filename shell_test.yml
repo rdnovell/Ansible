@@ -1,4 +1,5 @@
 ---
 # Ejemplo de como usar shell
-  - name: Ejecutar un comando en una shell remota.
-    shell: echo "test shell" >> /tmp/shell.txt
+  tasks:
+    - name: Ejecutar un comando en una shell remota.
+      shell: echo "test shell" >> /tmp/shell.txt
