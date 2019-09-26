@@ -1,4 +1,0 @@
----
-# Ejemplo de como usar command
-  - name: Ejecutar un comando en un host remoto.
-    command: echo "test command" >> /tmp/command.txt

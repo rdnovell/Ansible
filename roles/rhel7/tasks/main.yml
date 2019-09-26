@@ -1,5 +1,9 @@
 ---
-# This role contains common plays that will run on all nodes.
 
-- name: Create the repository for EPEL
-  copy: src=epel.repo dest=/etc/yum.repos.d/epel.repo
+# Ejemplo de como usar command
+  - name: Ejecutar un comando en un host remoto.
+    command: echo "test command" >> /tmp/command.txt
+
+# Ejemplo de como usar shell
+  - name: Ejecutar un comando en una shell remota.
+    shell: echo "test shell" >> /tmp/shell.txt
