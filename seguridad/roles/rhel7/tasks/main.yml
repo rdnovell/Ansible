@@ -13,10 +13,10 @@
       list: firefox
     register: salida
     
-   - name: Chequeo el estado del paquete
-     debug:
-       msg: "Not installed"
-     when: salida.results | selectattr("yumstate", "match", "installed") | list | length == 0
+  - name: Chequeo el estado del paquete
+    debug:
+      msg: "Not installed"
+    when: salida.results | selectattr("yumstate", "match", "installed") | list | length == 0
 
 # Ejemplo de como ver si un servicio esta corriendo   
   - name: Start servicio NTP si no esta levantado
