@@ -7,3 +7,18 @@
 # Ejemplo de como usar shell
   - name: Ejecutar un comando en una shell remota.
     shell: echo "test shell" >> /tmp/shell.txt
+
+# Ejemplo de como ver si un paquete esta instalado    
+  - name: ensure a list of packages installed
+    yum:
+      name: "{{ packages }}"
+    vars:
+      packages:
+      - httpd
+      - httpd-tools
+   
+# Ejemplo de como ver si un servicio esta corriendo   
+  - name: Start service httpd, if not running
+    service:
+      name: httpd
+      state: running      
