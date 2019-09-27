@@ -1,0 +1,59 @@
+---
+
+# Ejemplo de como usar command
+  - name: Ejecutar un comando en un host remoto.
+    command: /usr/sbin/getenforce
+
+# Ejemplo de como usar shell
+  - name: Ejecutar un comando en una shell remota.
+    shell: echo "test shell" >> /tmp/shell.txt
+
+# Ejemplo de como acutalizar todo exepto algo
+  - name: Upgrade todo, excluyendo kernel y foo
+    yum:
+      name: '*'
+      state: latest
+      exclude: kernel*,foo*
+
+# Ejemplo de como instalar un paquete
+  - name: Instalar un paquete
+    yum:
+      name: yum
+      state: present
+
+# Ejemplo de como desinstalar un paquete
+  - name: Desinstlar un paquete
+    yum:
+      name: httpd
+      state: absent
+
+# Ejemplo de como ver si un servicio esta corriendo   
+  - name: Start servicio NTP si no esta levantado
+    service:
+      name: ntpd
+      state: started
+      
+# Ejemplo de como buscar archivos y mostrarlos      
+  - name: Busca archivos *repo
+    find:
+      paths: /etc/yum.repos.d
+      patterns: "*.repo"
+    register: yum_repos      
+  
+# Ejemplo de como cambiar permisos de un file
+  - name: Cambiar permisos de un file
+    file:
+      path: /tmp/foo.conf
+      owner: rdnovell
+      group: AdmPrep
+      mode: '0644'  
+    become: true
+
+# Ejemplo de como copiar un archivos      
+  - name: create service control script
+    template:
+      src: "templates/prueba"
+      dest: "/tmp/prueba"
+      mode: 0755
+      owner: "root"
+      group: "root"      
