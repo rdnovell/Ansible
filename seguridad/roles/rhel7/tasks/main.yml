@@ -9,7 +9,7 @@
     shell: echo "test shell" >> /tmp/shell.txt
 
 # Ejemplo de como ver si un paquete esta instalado    
-  - name: ensure a list of packages installed
+  - name: Asegurar si los paquetes estan instalados
     yum:
       name: "{{ packages }}"
     vars:
@@ -18,7 +18,14 @@
       - httpd-tools
    
 # Ejemplo de como ver si un servicio esta corriendo   
-  - name: Start service httpd, if not running
+  - name: Start servicio NTP si no esta levantado
     service:
-      name: httpd
-      state: running      
+      name: ntp
+      state: running
+      
+# Ejemplo de como buscar archivos y mostrarlos      
+- name: Busca archivos *repo
+  find:
+      paths: /etc/yum.repos.d
+      patterns: "*.repo"
+  register: yum_repos      
