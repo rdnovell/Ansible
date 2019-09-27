@@ -8,15 +8,20 @@
   - name: Ejecutar un comando en una shell remota.
     shell: echo "test shell" >> /tmp/shell.txt
 
-# Ejemplo de como ver si un paquete esta instalado    
-  - name: Asegurar si los paquetes estan instalados
+  - name: Apache package
     yum:
-      name: "{{ packages }}"
-    become: true
-    vars:
-      packages:
-      - httpd
-      - httpd-tools
+      name: httpd
+      state: installed
+    
+# Ejemplo de como ver si un paquete esta instalado    
+#  - name: Asegurar si los paquetes estan instalados
+#    yum:
+#      name: "{{ packages }}"
+#    become: true
+#    vars:
+#      packages:
+#      - httpd
+#      - httpd-tools
    
 # Ejemplo de como ver si un servicio esta corriendo   
   - name: Start servicio NTP si no esta levantado
