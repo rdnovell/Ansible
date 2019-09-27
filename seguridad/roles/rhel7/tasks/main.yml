@@ -12,6 +12,7 @@
     yum:
       name: httpd
       state: installed
+    become: true
     
 # Ejemplo de como ver si un paquete esta instalado    
 #  - name: Asegurar si los paquetes estan instalados
