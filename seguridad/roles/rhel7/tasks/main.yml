@@ -8,9 +8,10 @@
   - name: Ejecutar un comando en una shell remota.
     shell: echo "test shell" >> /tmp/shell.txt
 
-  - name: Firefox package
+ # Ejemplo de como ver si un paquete esta instalado
+  - name: HTTPD package
     yum:
-      list: firefox
+      list: httpd
     register: salida
     
   - name: Chequeo el estado del paquete
@@ -36,5 +37,14 @@
     file:
       path: /tmp/foo.conf
       owner: rdnovell
-      group: rdnovell
+      group: AdmPrep
       mode: '0644'  
+
+# Ejemplo de como copiar un archivos      
+  - name: create service control script
+    template:
+      src: "templates/prueba"
+      dest: "/tmp/prueba"
+      mode: 0755
+      owner: "root"
+      group: "root"      
