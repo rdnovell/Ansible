@@ -39,6 +39,7 @@
       owner: rdnovell
       group: AdmPrep
       mode: '0644'  
+    become: true
 
 # Ejemplo de como copiar un archivos      
   - name: create service control script
