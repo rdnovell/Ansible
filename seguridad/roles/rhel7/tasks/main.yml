@@ -27,8 +27,8 @@
 # Ejemplo de como buscar archivos y mostrarlos      
   - name: Busca archivos *repo
     find:
-        paths: /etc/yum.repos.d
-        patterns: "*.repo"
+      paths: /etc/yum.repos.d
+      patterns: "*.repo"
     register: yum_repos      
   
 # Ejemplo de como cambiar permisos de un file
