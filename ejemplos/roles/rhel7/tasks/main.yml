@@ -9,11 +9,11 @@
     shell: echo "test shell" >> /tmp/shell.txt
 
 # Ejemplo de como acutalizar todo exepto algo
-  - name: Upgrade todo, excluyendo kernel y foo
-    yum:
-      name: '*'
-      state: latest
-      exclude: kernel*,foo*
+#  - name: Upgrade todo, excluyendo kernel y foo
+#    yum:
+#      name: '*'
+#      state: latest
+#      exclude: kernel*,foo*
 
 # Ejemplo de como instalar un paquete
   - name: Instalar un paquete
