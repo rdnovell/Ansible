@@ -10,19 +10,14 @@
 
   - name: Apache package
     yum:
-      list: httpd
+      list: firefox
     register: salida
     
-# Ejemplo de como ver si un paquete esta instalado    
-#  - name: Asegurar si los paquetes estan instalados
-#    yum:
-#      name: "{{ packages }}"
-#    become: true
-#    vars:
-#      packages:
-#      - httpd
-#      - httpd-tools
-   
+#  - name: Conditionally do next thing
+#    debug:
+#      msg: "Not installed"
+#    when: salida.results | selectattr("yumstate", "match", "installed") | list | length == 0
+
 # Ejemplo de como ver si un servicio esta corriendo   
   - name: Start servicio NTP si no esta levantado
     service:
