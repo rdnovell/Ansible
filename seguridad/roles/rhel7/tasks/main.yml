@@ -12,6 +12,7 @@
   - name: Asegurar si los paquetes estan instalados
     yum:
       name: "{{ packages }}"
+    become: true
     vars:
       packages:
       - httpd
@@ -24,8 +25,16 @@
       state: running
       
 # Ejemplo de como buscar archivos y mostrarlos      
-- name: Busca archivos *repo
-  find:
-      paths: /etc/yum.repos.d
-      patterns: "*.repo"
-  register: yum_repos      
+  - name: Busca archivos *repo
+    find:
+        paths: /etc/yum.repos.d
+        patterns: "*.repo"
+    register: yum_repos      
+  
+# Ejemplo de como cambiar permisos de un file
+  - name: Cambiar permisos de un file
+    file:
+      path: /tmp/foo.conf
+      owner: rdnovell
+      group: rdnovell
+      mode: '0644'  
