@@ -1,5 +1,10 @@
 ---
 
+  - name: Display all variables/facts known for a host
+    debug:
+      var: hostvars[inventory_hostname]
+      verbosity: 4    
+      
 #7.2 Servicios del Sistema Operativo
 
 #7.2.1 Servicios Inetd
@@ -92,11 +97,6 @@
       mode: 0644
       #notify: restart ntpd
 
-  - name: Display all variables/facts known for a host
-    debug:
-      var: hostvars[inventory_hostname]
-      verbosity: 4      
-      
 #7.2.2.2 Asegurarse que el sistema X Windows no esta instalado
 #7.2.2.3 Verificar que el servidor Avahi este desactivado
 #7.2.2.4 Verificar que el print server Cups este desactivado
