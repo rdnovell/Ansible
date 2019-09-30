@@ -85,12 +85,17 @@
 
   - name: 7.2.2.1.2 Asegurarse que NTP esta configurado
     template:
-      src: templates/ntp.conf{{inventory_hostname}}{{hostvars[inventory_hostname].sdp}}.j2
+      src: templates/ntp.conf{{inventory_hostname}}.j2
       dest: /etc/ntp.conf
       owner: root
       group: root
       mode: 0644
       #notify: restart ntpd
+
+  - name: Display all variables/facts known for a host
+    debug:
+      var: hostvars[inventory_hostname]
+      verbosity: 4      
       
 #7.2.2.2 Asegurarse que el sistema X Windows no esta instalado
 #7.2.2.3 Verificar que el servidor Avahi este desactivado
