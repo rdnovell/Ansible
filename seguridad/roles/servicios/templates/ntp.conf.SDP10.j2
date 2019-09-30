@@ -1,0 +1,13 @@
+keys /etc/ntp.keys
+
+restrict -4 default kod nomodify notrap nopeer noquery
+restrict -6 default kod nomodify notrap nopeer noquery
+
+server flo3egsdp1 prefer
+server 10.28.218.219
+server 10.26.148.219
+server 127.127.1.0
+fudge  127.127.1.0 stratum 10
+
+driftfile /var/ntp/ntp.drift
+broadcastdelay  0.008
