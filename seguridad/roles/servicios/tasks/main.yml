@@ -1,9 +1,7 @@
 ---
 
-  - name: Display all variables/facts known for a host
-    debug:
-      var: hostvars[inventory_hostname]
-      
+# tasks file
+
 #7.2 Servicios del Sistema Operativo
 
 #7.2.1 Servicios Inetd
@@ -89,7 +87,7 @@
 
   - name: 7.2.2.1.2 Asegurarse que NTP esta configurado
     template:
-      src: templates/ntp.conf{{inventory_hostname}}.j2
+      src: templates/ntp.conf{{hostvars[inventory_hostname].sdp}}.j2
       dest: /etc/ntp.conf
       owner: root
       group: root
