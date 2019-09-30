@@ -12,7 +12,7 @@
     become: true
     
   - name:7.1.1.1.2 Deshabilitar el FileSystem freevxfs
-      lineinfile:
+    lineinfile:
       dest: /etc/modprobe.d/CIS.conf
       regexp: "^(#)?install freevxfs(\\s|$)"
       line: "install freevxfs /bin/true"
@@ -20,7 +20,7 @@
     become: true
     
   - name:7.1.1.1.3 Deshabilitar el FileSystem jffs2
-      lineinfile:
+    lineinfile:
       dest: /etc/modprobe.d/CIS.conf
       regexp: "^(#)?install jffs2(\\s|$)"
       line: "install jffs2 /bin/true"
@@ -28,7 +28,7 @@
     become: true
     
   - name:7.1.1.1.4 Deshabilitar el FileSystem hfs
-      lineinfile:
+    lineinfile:
       dest: /etc/modprobe.d/CIS.conf
       regexp: "^(#)?install hfs(\\s|$)"
       line: "install hfs /bin/true"
@@ -36,7 +36,7 @@
     become: true
     
   - name:7.1.1.1.5 Deshabilitar el FileSystem hfsplus
-      lineinfile:
+    lineinfile:
       dest: /etc/modprobe.d/CIS.conf
       regexp: "^(#)?install hfsplus(\\s|$)"
       line: "install hfsplus /bin/true"
@@ -44,7 +44,7 @@
     become: true
     
   - name:7.1.1.1.6 Deshabilitar el FileSystem squashfs
-      lineinfile:
+    lineinfile:
       dest: /etc/modprobe.d/CIS.conf
       regexp: "^(#)?install squashfs(\\s|$)"
       line: "install squashfs /bin/true"
@@ -52,7 +52,7 @@
     become: true
     
   - name:7.1.1.1.7 Deshabilitar el FileSystem udf
-      lineinfile:
+    lineinfile:
       dest: /etc/modprobe.d/CIS.conf
       regexp: "^(#)?install udf(\\s|$)"
       line: "install udf /bin/true"
