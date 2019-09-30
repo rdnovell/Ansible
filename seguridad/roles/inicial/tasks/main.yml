@@ -120,7 +120,7 @@
   - name: 7.1.4.1 Restringir los Core Dumps
     sysctl:
       name: fs.suid_dumpable
-      value: 0
+      value: '0'
       state: present
       reload: yes
       sysctl_set: yes
@@ -129,7 +129,7 @@
   - name: 7.1.4.2 Habilitar la región Randomized Virtual Memory
     sysctl:
       name: kernel.randomize_va_space
-      value: 2
+      value: '2'
       state: present
       reload: yes
       sysctl_set: yes

@@ -5,47 +5,47 @@
 #7.2.1 Servicios Inetd
   
   - name: 7.2.1.1 Asegurarse que los servicios chargen NO están habilitados
-    command: chkconfig chargen-dgram off
+    command: /usr/sbin/chkconfig chargen-dgram off
     notify: restart xinetd
     
   - name: 7.2.1.1 Asegurarse que los servicios chargen NO están habilitados
-    command: chkconfig chargen-stream off
+    command: /usr/sbin/chkconfig chargen-stream off
     notify: restart xinetd
     
   - name: 7.2.1.2 Asegurarse que los servicios daytime NO están habilitados
-    command: chkconfig daytime-dgram off
+    command: /usr/sbin/chkconfig daytime-dgram off
     notify: restart xinetd
     
   - name: 7.2.1.2 Asegurarse que los servicios daytime NO están habilitados
-    command: chkconfig daytime-stream off
+    command: /usr/sbin/chkconfig daytime-stream off
     notify: restart xinetd
   
   - name: 7.2.1.3 Asegurarse que los servicios discard NO están habilitados
-    command: chkconfig discard-dgram off
+    command: /usr/sbin/chkconfig discard-dgram off
     notify: restart xinetd
     
   - name: 7.2.1.3 Asegurarse que los servicios discard NO están habilitados
-    command: chkconfig discard-stream off
+    command: /usr/sbin/chkconfig discard-stream off
     notify: restart xinetd
   
   - name: 7.2.1.4 Asegurarse que los servicios echo NO están habilitados
-    command: chkconfig echo-dgram off
+    command: /usr/sbin/chkconfig echo-dgram off
     notify: restart xinetd
     
   - name: 7.2.1.4 Asegurarse que los servicios echo NO están habilitados
-    command: chkconfig echo-stream off
+    command: /usr/sbin/chkconfig echo-stream off
     notify: restart xinetd
   
   - name: 7.2.1.5 Asegurarse que los servicios time NO están habilitados
-    command: chkconfig time-dgram off
+    command: /usr/sbin/chkconfig time-dgram off
     notify: restart xinetd
     
   - name: 7.2.1.5 Asegurarse que los servicios time NO están habilitados
-    command: chkconfig time-stream off
+    command: /usr/sbin/chkconfig time-stream off
     notify: restart xinetd
   
   - name: 7.2.1.6 Asegurarse que los servicios tftp-server NO están habilitados
-    command: chkconfig tftp off
+    command: /usr/sbin/chkconfig tftp off
     notify: restart xinetd
     
 #7.2.2 Servicios especiales 
