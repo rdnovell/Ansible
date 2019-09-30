@@ -9,7 +9,7 @@
       regexp: "^(#)?install cramfs(\\s|$)"
       line: "install cramfs /bin/true"
       create: yes
-
+    become: true
 #  - name:7.1.1.1.2 Deshabilitar el FileSystem freevxfs
 #  - name:7.1.1.1.3 Deshabilitar el FileSystem jffs2
 #  - name:7.1.1.1.4 Deshabilitar el FileSystem hfs
