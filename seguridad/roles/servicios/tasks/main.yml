@@ -1,3 +1,75 @@
 ---
 
 #7.2 Servicios del Sistema Operativo
+
+#7.2.1 Servicios Inetd
+  
+  - name: 7.2.1.1 Asegurarse que los servicios chargen NO están habilitados
+    command: chkconfig chargen-dgram off
+    notify: restart xinetd
+    
+  - name: 7.2.1.1 Asegurarse que los servicios chargen NO están habilitados
+    command: chkconfig chargen-stream off
+    notify: restart xinetd
+    
+  - name: 7.2.1.2 Asegurarse que los servicios daytime NO están habilitados
+    command: chkconfig daytime-dgram off
+    notify: restart xinetd
+    
+  - name: 7.2.1.2 Asegurarse que los servicios daytime NO están habilitados
+    command: chkconfig daytime-stream off
+    notify: restart xinetd
+  
+  - name: 7.2.1.3 Asegurarse que los servicios discard NO están habilitados
+    command: chkconfig discard-dgram off
+    notify: restart xinetd
+    
+  - name: 7.2.1.3 Asegurarse que los servicios discard NO están habilitados
+    command: chkconfig discard-stream off
+    notify: restart xinetd
+  
+  - name: 7.2.1.4 Asegurarse que los servicios echo NO están habilitados
+    command: chkconfig echo-dgram off
+    notify: restart xinetd
+    
+  - name: 7.2.1.4 Asegurarse que los servicios echo NO están habilitados
+    command: chkconfig echo-stream off
+    notify: restart xinetd
+  
+  - name: 7.2.1.5 Asegurarse que los servicios time NO están habilitados
+    command: chkconfig time-dgram off
+    notify: restart xinetd
+    
+  - name: 7.2.1.5 Asegurarse que los servicios time NO están habilitados
+    command: chkconfig time-stream off
+    notify: restart xinetd
+  
+  - name: 7.2.1.6 Asegurarse que los servicios tftp-server NO están habilitados
+    command: chkconfig tftp off
+    notify: restart xinetd
+    
+#7.2.2 Servicios especiales 
+#7.2.2.1 Sincronización del tiempo
+#7.2.2.1.1 Asegurarse que la sincronización del tiempo esta siendo usada
+#7.2.2.1.2 Asegurarse que NTP esta configurado
+#7.2.2.2 Asegurarse que el sistema X Windows no esta instalado
+#7.2.2.3 Verificar que el servidor Avahi este desactivado
+#7.2.2.4 Verificar que el print server Cups este desactivado
+#7.2.2.5 Verificar que el DHCP Server este desactivado
+#7.2.2.6 Verificar que el LDAP Server este desactivado
+#7.2.2.7 Verificar que NFS y RPC esten desactivados
+#7.2.2.8 Verificar que el servidor de DNS este desactivado
+#7.2.2.9 Verificar que el servidor FTP este desactivado
+#7.2.2.10 Verificar que el servidor HTTP este desactivado
+#7.2.2.11 Verificar que el servidor IMAP y POP3 esten desactivados
+#7.2.2.12 Verificar que el servidor Samba este desactivado
+#7.2.2.13 Verificar que el servidor HTTP Proxy este desactivado
+#7.2.2.14 Verificar que el servidor SNMP no este activado
+#7.2.2.15 Configurar el Mail Tranfer Agent en modo local
+#7.2.2.16 Verificar que el servidor NIS no este activado
+#7.2.2.17 Asegurarse que el rsh server no este activado
+#7.2.2.18 Asegurarse que el talk server no este activado
+#7.2.2.19 Asegurarse que el telnet server no este activado
+#7.2.2.20 Asegurarse que el tftp server no este activado
+#7.2.2.21 Asegurarse que el servicio rsync no este activado
+#7.2.2.22 Asegurarse que el servicio AVAHI SERVER no este activado
