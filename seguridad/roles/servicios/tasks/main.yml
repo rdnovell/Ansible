@@ -80,10 +80,17 @@
   - name: 7.2.2.1.1 Asegurarse que la sincronización del tiempo esta siendo usada
     service:
       name: chronyd
-      state: started
-      enabled: yes      
+      state: stopped
+      enabled: no      
 
-#7.2.2.1.2 Asegurarse que NTP esta configurado
+  - name: 7.2.2.1.2 Asegurarse que NTP esta configurado
+    template:
+      src: templates/ntp.conf{{host[0:5]}}.j2
+      dest: /etc/ntp.conf
+      owner: root
+      group: root
+      mode: 0644
+      
 #7.2.2.2 Asegurarse que el sistema X Windows no esta instalado
 #7.2.2.3 Verificar que el servidor Avahi este desactivado
 #7.2.2.4 Verificar que el print server Cups este desactivado
