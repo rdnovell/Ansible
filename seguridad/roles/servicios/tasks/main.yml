@@ -128,10 +128,18 @@
       enabled: no
         
   - name: 7.2.2.5 Verificar que el DHCP Server este desactivado
-    service:
-      name: dhcpd
-      state: stopped
-      enabled: no
+    block:
+      - name: 7.2.1.6 Asegurarse que los servicios tftp-server NO están habilitados
+        service_facts:
+        register: services_list
+      
+      - name: 7.2.1.6 Asegurarse que los servicios tftp-server NO están habilitados
+        service:
+          name: dhcpd
+          state: stopped
+          enabled: no
+        when: "'dhcpd' in services_list.ansible_facts.services"
+    
         
   - name: 7.2.2.6 Verificar que el LDAP Server este desactivado
     service:
