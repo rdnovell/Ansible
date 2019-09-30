@@ -114,38 +114,38 @@
       #- "@X Window System"
       #- "xorg-x11*"
       - "httpd*" 
-        
+
+  - name: Traer servicios
+    service_facts:
+    register: services_list
+    
   - name: 7.2.2.3 Verificar que el servidor Avahi este desactivado
     service:
       name: avahi-daemon
       state: stopped
       enabled: no
+    when: "'avahi-daemon' in services_list.ansible_facts.services"      
         
   - name: 7.2.2.4 Verificar que el print server Cups este desactivado
     service:
       name: cups
       state: stopped
       enabled: no
-        
-  - name: 7.2.2.5 Verificar que el DHCP Server este desactivado
-    block:
-      - name: 7.2.1.6 Asegurarse que los servicios tftp-server NO están habilitados
-        service_facts:
-        register: services_list
-      
-      - name: 7.2.1.6 Asegurarse que los servicios tftp-server NO están habilitados
-        service:
-          name: dhcpd
-          state: stopped
-          enabled: no
-        when: "'dhcpd' in services_list.ansible_facts.services"
+    when: "'cups' in services_list.ansible_facts.services"
     
-        
+  - name: 7.2.2.5 Verificar que el DHCP Server este desactivado
+    service:
+      name: dhcpd
+      state: stopped
+      enabled: no
+    when: "'dhcpd' in services_list.ansible_facts.services"
+    
   - name: 7.2.2.6 Verificar que el LDAP Server este desactivado
     service:
       name: slapd
       state: stopped
       enabled: no
+    when: "'slapd' in services_list.ansible_facts.services"
       
 #7.2.2.7 Verificar que NFS y RPC esten desactivados
 #7.2.2.8 Verificar que el servidor de DNS este desactivado
