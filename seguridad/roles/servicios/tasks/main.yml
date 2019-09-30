@@ -53,7 +53,7 @@
     block:
       - name: 7.2.1.6 Asegurarse que los servicios tftp-server NO están habilitados
         stat:
-            path: /etc/xinetd.d/tftp
+          path: /etc/xinetd.d/tftp
         register: tftp_service
       
       - name: 7.2.1.6 Asegurarse que los servicios tftp-server NO están habilitados
