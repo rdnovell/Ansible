@@ -7,4 +7,4 @@
 
   roles:
     - role: inicial
-      when: ansible_os_family == "RedHat" and ansible_lsb.major_release|int >= 7
+      when: ansible_os_family == "RedHat" and ansible_distribution_major_version == '7'
