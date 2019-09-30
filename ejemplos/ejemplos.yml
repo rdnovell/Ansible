@@ -1,7 +1,7 @@
 ---
-# Este playbook aplica la plantilla de seguridad.
+# Este playbook muestra ejemplos.
 
-- name: aplicar plantilla de seguridad
+- name: ejemplos
   hosts: all
 
   roles:
