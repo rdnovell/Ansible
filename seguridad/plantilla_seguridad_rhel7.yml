@@ -4,7 +4,7 @@
 - name: plantilla de seguridad rhel7
   hosts: all
   become: true
-  when: ansible_os_family == "RedHat" and ansible_lsb.major_release|int >= 7
 
   roles:
     - inicial
+      when: ansible_os_family == "RedHat" and ansible_lsb.major_release|int >= 7
