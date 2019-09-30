@@ -108,7 +108,7 @@
      
   - name: 7.2.2.2 Asegurarse que el sistema X Windows no esta instalado
     yum:
-      name: {{item}}
+      name: "{{item}}"
       state: absent
     with_items:
       #- "@X Window System"
