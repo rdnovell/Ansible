@@ -1,0 +1,24 @@
+---
+
+# Configuración del sistema de archivos.
+#7.1 Configuración inicial.
+#7.1.1 Configuración del sistema de archivos.
+  - name:7.1.1.1.1 Deshabilitar el FileSystem cramfs
+    lineinfile:
+        dest: /etc/modprobe.d/CIS.conf
+        regexp: "^(#)?install cramfs(\\s|$)"
+        line: "install cramfs /bin/true"
+        create: yes
+        
+#  - name:7.1.1.1.2 Deshabilitar el FileSystem freevxfs
+#  - name:7.1.1.1.3 Deshabilitar el FileSystem jffs2
+#  - name:7.1.1.1.4 Deshabilitar el FileSystem hfs
+#  - name:7.1.1.1.5 Deshabilitar el FileSystem hfsplus
+#  - name:7.1.1.1.6 Deshabilitar el FileSystem squashfs
+#  - name:7.1.1.1.7 Deshabilitar el FileSystem udf
+#7.1.2 Configurar Actualizaciones de Software.
+#7.1.3 Configurar el boot de manera segura (Secure Boot Settings).
+#7.1.4 Hardening adicional para procesos.
+#7.1.5 Warning Banners.
+#7.1.6 Asegurarse de que se hayan instalado actualizaciones, parches y software de seguridad
+  
