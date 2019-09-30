@@ -1,10 +1,10 @@
 ---
 
-# Configuracion del sistema de archivos.
+# Configuración del sistema de archivos.
 
-#7.1 Configuracion inicial.
+#7.1 Configuración inicial.
 
-#7.1.1 Configuracion del sistema de archivos.
+#7.1.1 Configuración del sistema de archivos.
 
 #7.1.1.1 Deshabilitar filesystems que no se usan
 
@@ -73,12 +73,12 @@
 #7.1.1.15 Configurar la opción nodev para la partición /dev/shm
 #7.1.1.16 Configurar la opción nosuid para la partición /dev/shm
 #7.1.1.17 Configurar la opción noexec para la partición /dev/shm
-#7.1.1.18 Configurar la opción nodev para particiones de medios extraíbles (cdrom, floppy,etc)
-#7.1.1.19 Configurar la opción noexec para particiones de medios extraíbles (cdrom, floppy,etc)
-#7.1.1.20 Configurar la opción nosuid para particiones de medios extraíbles (cdrom, floppy,etc)
+#7.1.1.18 Configurar la opción nodev para particiónes de medios extraíbles (cdrom, floppy,etc)
+#7.1.1.19 Configurar la opción noexec para particiónes de medios extraíbles (cdrom, floppy,etc)
+#7.1.1.20 Configurar la opción nosuid para particiónes de medios extraíbles (cdrom, floppy,etc)
 #7.1.1.21 Setear Sticky Bit en todos los Directorios con permiso de escritura
   
-#7.1.2 Configurar Actualizaciones de Software.
+#7.1.2 Configurar Actualizaciónes de Software.
 
   - name: 7.1.2.1 Configurar la conexión a los repositorios de RPM de la Red Hat Network (RHN)
     command: subscription-manager identity
@@ -94,7 +94,7 @@
   - name: 7.1.2.3 Verificar si la clave GPG Red Hat está Instalada
     command: gpg --quiet --with-fingerprint /etc/pki/rpm-gpg/RPM-GPG-KEY-{{ ansible_distribution|lower }}-release
  
-  - name: 7.1.2.4 Obtener actualizaciones de paquetes con yum
+  - name: 7.1.2.4 Obtener actualizaciónes de paquetes con yum
     command: yum check-update
     register: yum_configured
     changed_when: no
@@ -102,9 +102,66 @@
   
 #7.1.3 Configurar el boot de manera segura (Secure Boot Settings).
 
-#7.1.4 Hardening adicional para procesos.
+  - name: 7.1.3.1 Asegúrese de que los permisos en la configuración del bootloader estén configurados
+    file:
+      path: /boot/grub2/grub.cfg 
+      owner: root
+      group: root
+      mode: 0600
 
+#7.1.4 Hardening adiciónal para procesos.
+
+  - name: 7.1.4.1 Restringir los Core Dumps
+    lineinfile:
+      state: present
+      dest: /etc/security/limits.conf
+      regexp: '^#?\\*.*core'
+      line: '*                hard    core            0'
+      insertbefore: '^# End of file'
+  
+  - name: 7.1.4.1 Restringir los Core Dumps
+    sysctl:
+      name: fs.suid_dumpable
+      value: 0
+      state: present
+      reload: yes
+      sysctl_set: yes
+      ignoreerrors: yes
+        
+  - name: 7.1.4.2 Habilitar la región Randomized Virtual Memory
+    sysctl:
+      name: kernel.randomize_va_space
+      value: 2
+      state: present
+      reload: yes
+      sysctl_set: yes
+      ignoreerrors: yes
+      
 #7.1.5 Warning Banners.
 
-#7.1.6 Asegurarse de que se hayan instalado actualizaciones, parches y software de seguridad
+  - name: 7.1.5.1 Configurar Warning Banners
+    template:
+      src: templates/motd.j2
+      dest: /etc/motd
+      owner: root
+      group: root
+      mode: 0644
+  
+  - name: 7.1.5.1 Configurar Warning Banners
+    template:
+      src: templates/issue.j2
+      dest: /etc/issue
+      owner: root
+      group: root
+      mode: 0644
+  
+  - name: 7.1.5.1 Configurar Warning Banners
+    template:
+      src: templates/issue.net.j2
+      dest: /etc/issue.net
+      owner: root
+      group: root
+      mode: 0644
+
+#7.1.6 Asegurarse de que se hayan instalado actualizaciónes, parches y software de seguridad
   
