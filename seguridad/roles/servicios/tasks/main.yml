@@ -58,8 +58,31 @@
         when: tftp_service.stat.exists
       
 #7.2.2 Servicios especiales 
+
 #7.2.2.1 Sincronización del tiempo
-#7.2.2.1.1 Asegurarse que la sincronización del tiempo esta siendo usada
+
+  - name: 7.2.2.1.1 Asegurarse que la sincronización del tiempo esta siendo usada
+    yum:
+      name: ntp
+      state: present
+        
+  - name: 7.2.2.1.1 Asegurarse que la sincronización del tiempo esta siendo usada
+    yum:
+      name: chrony
+      state: present
+        
+  - name: 7.2.2.1.1 Asegurarse que la sincronización del tiempo esta siendo usada
+    service:
+      name: ntpd
+      state: started
+      enabled: yes
+        
+  - name: 7.2.2.1.1 Asegurarse que la sincronización del tiempo esta siendo usada
+    service:
+      name: chronyd
+      state: started
+      enabled: yes      
+
 #7.2.2.1.2 Asegurarse que NTP esta configurado
 #7.2.2.2 Asegurarse que el sistema X Windows no esta instalado
 #7.2.2.3 Verificar que el servidor Avahi este desactivado
