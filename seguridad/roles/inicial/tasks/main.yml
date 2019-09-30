@@ -1,8 +1,8 @@
 ---
 
-# Configuración del sistema de archivos.
-#7.1 Configuración inicial.
-#7.1.1 Configuración del sistema de archivos.
+# Configuracion del sistema de archivos.
+#7.1 Configuracion inicial.
+#7.1.1 Configuracion del sistema de archivos.
   - name:7.1.1.1.1 Deshabilitar el FileSystem cramfs
     lineinfile:
         dest: /etc/modprobe.d/CIS.conf
