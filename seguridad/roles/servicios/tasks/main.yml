@@ -85,7 +85,7 @@
 
   - name: 7.2.2.1.2 Asegurarse que NTP esta configurado
     template:
-      src: templates/ntp.conf{{host[0:5]}}.j2
+      src: templates/ntp.conf{{ansible_hostname[0:5]}}.j2
       dest: /etc/ntp.conf
       owner: root
       group: root
