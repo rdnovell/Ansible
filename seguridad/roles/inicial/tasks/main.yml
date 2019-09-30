@@ -1,7 +1,5 @@
 ---
 
-# Configuración del sistema de archivos.
-
 #7.1 Configuración inicial.
 
 #7.1.1 Configuración del sistema de archivos.
@@ -165,3 +163,8 @@
 
 #7.1.6 Asegurarse de que se hayan instalado actualizaciónes, parches y software de seguridad
   
+  - name: 7.1.6 Asegurarse de que se hayan instalado actualizaciónes, parches y software de seguridad
+    command: yum check-update
+    register: yum_configured
+    changed_when: no
+    failed_when: no
