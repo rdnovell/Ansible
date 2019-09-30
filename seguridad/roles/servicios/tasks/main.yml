@@ -117,27 +117,27 @@
         
 - name: 7.2.2.3 Verificar que el servidor Avahi este desactivado
   service:
-      name: avahi-daemon
-      state: stopped
-      enabled: no
+    name: avahi-daemon
+    state: stopped
+    enabled: no
       
 - name: 7.2.2.4 Verificar que el print server Cups este desactivado
   service:
-      name: cups
-      state: stopped
-      enabled: no
+    name: cups
+    state: stopped
+    enabled: no
       
 - name: 7.2.2.5 Verificar que el DHCP Server este desactivado
   service:
-      name: dhcpd
-      state: stopped
-      enabled: no
+    name: dhcpd
+    state: stopped
+    enabled: no
       
 - name: 7.2.2.6 Verificar que el LDAP Server este desactivado
   service:
-      name: slapd
-      state: stopped
-      enabled: no
+    name: slapd
+    state: stopped
+    enabled: no
       
 #7.2.2.7 Verificar que NFS y RPC esten desactivados
 #7.2.2.8 Verificar que el servidor de DNS este desactivado
