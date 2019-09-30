@@ -6,3 +6,8 @@
     service:
       name: xinetd
       state: restarted
+      
+  - name: restart ntpd
+    service:
+      name: ntpd
+      state: restarted      
