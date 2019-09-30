@@ -5,11 +5,7 @@
 #7.2.1 Servicios Inetd
   
   - name: 7.2.1.1 Asegurarse que los servicios chargen NO están habilitados
-    command: - name: restart xinetd
-  become: yes
-  service:
-      name: xinetd
-      state: restarted/usr/sbin/chkconfig chargen-dgram off
+    command: /usr/sbin/chkconfig chargen-dgram off
     notify: restart xinetd
     
   - name: 7.2.1.1 Asegurarse que los servicios chargen NO están habilitados
