@@ -3,15 +3,65 @@
 # tasks file
 
 #7.5 System Access, Authentication and Authorization
+
 #7.5.1 Configuración de History Extendido
+
 #7.5.2 Configurar Cron
-#7.5.2.1 Asegurarse que el servicio de Cron esta activado
-#7.5.2.2 Asegurarse que están configurados los permisos en /etc/crontab
-#7.5.2.3 Asegurarse que están configurados los permisos en /etc/cron.hourly
-#7.5.2.4 Asegurarse que están configurados los permisos en /etc/cron.daily
-#7.5.2.5 Asegurarse que están configurados los permisos en /etc/cron.weekly
-#7.5.2.6 Asegurarse que están configurados los permisos en /etc/cron.monthly
-#7.5.2.7 Asegurarse que están configurados los permisos en /etc/cron.d
+
+  - name: 7.5.2.1 Asegurarse que el servicio de Cron esta activado
+    service:
+      name: crond
+      state: started      
+      enabled: yes
+  
+  - name: 7.5.2.2 Asegurarse que están configurados los permisos en /etc/crontab
+    file:
+      dest: /etc/crontab
+      owner: root
+      group: root
+      mode: 0600
+  
+  - name: 7.5.2.3 Asegurarse que están configurados los permisos en /etc/cron.hourly
+    file:
+      dest: /etc/cron.hourly
+      state: directory
+      owner: root
+      group: root
+      mode: 0600
+  
+  - name: 7.5.2.4 Asegurarse que están configurados los permisos en /etc/cron.daily
+    file:
+      dest: /etc/cron.daily
+      state: directory
+      owner: root
+      group: root
+      mode: 0600
+  
+  - name: 7.5.2.5 Asegurarse que están configurados los permisos en /etc/cron.weekly
+    file:
+      dest: /etc/cron.weekly
+      state: directory
+      owner: root
+      group: root
+      mode: 0600
+  
+  - name: 7.5.2.6 Asegurarse que están configurados los permisos en /etc/cron.monthly
+    file:
+      dest: /etc/cron.monthly
+      state: directory
+      owner: root
+      group: root
+      mode: 0600
+  
+  
+  - name: 7.5.2.7 Asegurarse que están configurados los permisos en /etc/cron.d
+    file:
+      dest: /etc/cron.d
+      state: directory
+      owner: root
+      group: root
+      mode: 0600
+        
 #7.5.3 Configurar SSH
 #7.5.3.3 Asegurarse que están configurados los permisos en /etc/ssh/sshd_config
 #7.5.3.4 Configurar parámetros de SSH

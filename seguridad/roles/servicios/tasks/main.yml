@@ -105,15 +105,15 @@
       dest: /usr/lib/systemd/system/ntpd.service
       regexp: "^(#)?ExecStart"
       line: "ExecStart=/usr/sbin/ntpd -u ntp:ntp $OPTIONS"
-     
+
+#Lo usamos para oracle     
   - name: 7.2.2.2 Asegurarse que el sistema X Windows no esta instalado
     yum:
       name: "{{item}}"
-      state: absent
+      state: present
     with_items:
-      #- "@X Window System"
-      #- "xorg-x11*"
-      - "httpd*" 
+      - "@X Window System"
+      - "xorg-x11*"
 
   - name: Traer servicios
     service_facts:
