@@ -162,10 +162,4 @@
       group: root
       mode: 0644
 
-#7.1.6 Asegurarse de que se hayan instalado actualizaciónes, parches y software de seguridad
-  
-  - name: 7.1.6 Asegurarse de que se hayan instalado actualizaciónes, parches y software de seguridad
-    command: yum check-update
-    register: yum_configured
-    changed_when: no
-    failed_when: no
+#7.1.6 Asegurarse de que se hayan instalado actualizaciónes, parches y software de seguridad. Idem 7.1.2.4
