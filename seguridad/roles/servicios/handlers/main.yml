@@ -26,3 +26,10 @@
     service:
       name: auditd
       state: restarted      
+      
+  - name: sysctl flush ipv4 route table
+    become: yes
+    sysctl:
+      name: net.ipv4.route.flush
+      value: 1
+      sysctl_set: yes      
