@@ -146,20 +146,134 @@
       state: stopped
       enabled: no
     when: "'slapd.service' in services_list.ansible_facts.services"
-      
-#7.2.2.7 Verificar que NFS y RPC esten desactivados
-#7.2.2.8 Verificar que el servidor de DNS este desactivado
-#7.2.2.9 Verificar que el servidor FTP este desactivado
-#7.2.2.10 Verificar que el servidor HTTP este desactivado
-#7.2.2.11 Verificar que el servidor IMAP y POP3 esten desactivados
-#7.2.2.12 Verificar que el servidor Samba este desactivado
-#7.2.2.13 Verificar que el servidor HTTP Proxy este desactivado
-#7.2.2.14 Verificar que el servidor SNMP no este activado
-#7.2.2.15 Configurar el Mail Tranfer Agent en modo local
-#7.2.2.16 Verificar que el servidor NIS no este activado
-#7.2.2.17 Asegurarse que el rsh server no este activado
-#7.2.2.18 Asegurarse que el talk server no este activado
-#7.2.2.19 Asegurarse que el telnet server no este activado
-#7.2.2.20 Asegurarse que el tftp server no este activado
-#7.2.2.21 Asegurarse que el servicio rsync no este activado
-#7.2.2.22 Asegurarse que el servicio AVAHI SERVER no este activado
+    
+  - name: 7.2.2.7 Verificar que NFS y RPC esten desactivados
+    service:
+      name: nfs
+      state: stopped
+      enabled: no
+    when: "'nfs.service' in services_list.ansible_facts.services"
+    
+  - name: 7.2.2.7 Verificar que NFS y RPC esten desactivados
+    service:
+      name: rpcbind
+      state: stopped
+      enabled: no
+    when: "'rpcbind.service' in services_list.ansible_facts.services"
+    
+  - name: 7.2.2.8 Verificar que el servidor de DNS este desactivado
+    service:
+      name: named
+      state: stopped
+      enabled: no
+    when: "'named.service' in services_list.ansible_facts.services"
+    
+  - name: 7.2.2.9 Verificar que el servidor FTP este desactivado
+    service:
+      name: vsftpd
+      state: stopped
+      enabled: no
+    when: "'vsftpd.service' in services_list.ansible_facts.services"    
+    
+  - name: 7.2.2.10 Verificar que el servidor HTTP este desactivado
+    service:
+      name: httpd
+      state: stopped
+      enabled: no
+    when: "'httpd.service' in services_list.ansible_facts.services"      
+  
+  - name: 7.2.2.11 Verificar que el servidor IMAP y POP3 esten desactivados
+    service:
+      name: dovecot
+      state: stopped
+      enabled: no
+    when: "'dovecot.service' in services_list.ansible_facts.services"      
+    
+  - name: 7.2.2.12 Verificar que el servidor Samba este desactivado
+    service:
+      name: smb
+      state: stopped
+      enabled: no
+    when: "'smb.service' in services_list.ansible_facts.services"      
+    
+  - name: 7.2.2.13 Verificar que el servidor HTTP Proxy este desactivado
+    service:
+      name: squid
+      state: stopped
+      enabled: no
+    when: "'squid.service' in services_list.ansible_facts.services"      
+    
+#Lo usamos para alarmas
+  - name: 7.2.2.14 Verificar que el servidor SNMP no este activado
+    service:
+      name: snmpd
+      state: started
+      enabled: yes
+    when: "'snmpd.service' in services_list.ansible_facts.services"      
+  
+  - name: 7.2.2.15 Configurar el Mail Tranfer Agent en modo local
+    lineinfile:
+      dest: /etc/postfix/main.cf
+      regexp: "^(#)?inet_interfaces"
+      line: "inet_interfaces = localhost"
+    notify: restart postfix
+
+  - name: 7.2.2.16 Verificar que el servidor NIS no este activado
+    service:
+      name: ypserv
+      state: stopped
+      enabled: no
+    when: "'ypserv.service' in services_list.ansible_facts.services"      
+    
+  - name: 7.2.2.17 Asegurarse que el rsh server no este activado
+    service:
+      name: rsh.socket
+      state: stopped
+      enabled: no
+    when: "'rsh.socket.service' in services_list.ansible_facts.services"      
+    
+  - name: 7.2.2.17 Asegurarse que el rsh server no este activado
+    service:
+      name: rlogin.socket
+      state: stopped
+      enabled: no    
+    when: "'rlogin.socket.service' in services_list.ansible_facts.services"      
+    
+  - name: 7.2.2.17 Asegurarse que el rsh server no este activado
+    service:
+      name: rexec.socket
+      state: stopped
+      enabled: no
+    when: "'rexec.socket.service' in services_list.ansible_facts.services"      
+    
+  - name: 7.2.2.18 Asegurarse que el talk server no este activado
+    service:
+      name: ntalk
+      state: stopped
+      enabled: no
+    when: "'ntalk.service' in services_list.ansible_facts.services"      
+    
+  - name: 7.2.2.19 Asegurarse que el telnet server no este activado
+    service:
+      name: telnet
+      state: stopped
+      enabled: no
+    when: "'telnet.service' in services_list.ansible_facts.services"      
+  
+  - name: 7.2.2.20 Asegurarse que el tftp server no este activado
+    service:
+      name: tftp
+      state: stopped
+      enabled: no
+    when: "'tftp.service' in services_list.ansible_facts.services"  
+    
+  - name: 7.2.2.21 Asegurarse que el servicio rsync no este activado
+    service:
+      name: rsyncd
+      state: stopped
+      enabled: no
+    when: "'rsyncd.service' in services_list.ansible_facts.services"      
+
+#7.2.2.22 Asegurarse que el servicio AVAHI SERVER no este activado. Idem 7.2.2.3
+
+
