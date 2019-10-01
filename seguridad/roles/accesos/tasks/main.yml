@@ -191,7 +191,7 @@
       - { key: 'mindiff', value: '3' }
       - { key: 'maxrepeats', value: '2' } 
       
-#7.5.4.2 Bloqueo por intentos fallidos de contraseñas
+#7.5.4.2 Bloqueo por intentos fallidos de contraseñas. Peligroso
 
   - name: 7.5.4.3 Limitar la historia de passwords
     lineinfile:
