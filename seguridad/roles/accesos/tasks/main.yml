@@ -53,7 +53,6 @@
       group: root
       mode: 0600
   
-  
   - name: 7.5.2.7 Asegurarse que están configurados los permisos en /etc/cron.d
     file:
       dest: /etc/cron.d
@@ -61,7 +60,7 @@
       owner: root
       group: root
       mode: 0600
-        
+
 #7.5.3 Configurar SSH
 
   - name: 7.5.3.3 Asegurarse que están configurados los permisos en /etc/ssh/sshd_config
@@ -70,17 +69,177 @@
       owner: root
       group: root
       mode: 0600
-      
-#7.5.3.4 Configurar parámetros de SSH
+ 
+  - name: 7.5.3.4 Configurar parámetros de SSH
+    lineinfile:
+      state: present
+      dest: /etc/ssh/sshd_config
+      regexp: '^Protocol'
+      line: 'Protocol 2'
+    notify: restart sshd
+    
+  - name: 7.5.3.4 Configurar parámetros de SSH
+    lineinfile:
+      state: present
+      dest: /etc/ssh/sshd_config
+      regexp: '^LogLevel'
+      line: 'LogLevel INFO'
+    notify: restart sshd
+    
+  - name: 7.5.3.4 Configurar parámetros de SSH
+    lineinfile:
+      state: present
+      dest: /etc/ssh/sshd_config
+      regexp: '^X11Forwarding'
+      line: 'X11Forwarding no'
+    notify: restart sshd
+    
+  - name: 7.5.3.4 Configurar parámetros de SSH
+    lineinfile:
+      state: present
+      dest: /etc/ssh/sshd_config
+      regexp: '^(#)?MaxAuthTries \d'
+      line: 'MaxAuthTries 4'
+    notify: restart sshd
+    
+  - name: 7.5.3.4 Configurar parámetros de SSH
+    lineinfile:
+      state: present
+      dest: /etc/ssh/sshd_config
+      regexp: '^IgnoreRhosts'
+      line: 'IgnoreRhosts yes'
+    notify: restart sshd
+    
+  - name: 7.5.3.4 Configurar parámetros de SSH
+    lineinfile:
+      state: present
+      dest: /etc/ssh/sshd_config
+      regexp: '^HostbasedAuthentication'
+      line: 'HostbasedAuthentication no'
+    notify: restart sshd
+    
+  - name: 7.5.3.4 Configurar parámetros de SSH
+    lineinfile:
+      state: present
+      dest: /etc/ssh/sshd_config
+      regexp: '^PermitRootLogin'
+      line: 'PermitRootLogin no'
+    notify: restart sshd
+    
+  - name: 7.5.3.4 Configurar parámetros de SSH
+    lineinfile:
+      state: present
+      dest: /etc/ssh/sshd_config
+      regexp: '^PermitEmptyPasswords'
+      line: 'PermitEmptyPasswords no'
+    notify: restart sshd
+    
+  - name: 7.5.3.4 Configurar parámetros de SSH
+    lineinfile:
+      state: present
+      dest: /etc/ssh/sshd_config
+      regexp: '^PermitUserEnvironment'
+      line: 'PermitUserEnvironment no'
+    notify: restart sshd
+    
+  - name: 7.5.3.4 Configurar parámetros de SSH
+    lineinfile:
+      state: present
+      dest: /etc/ssh/sshd_config
+      regexp: '^Ciphers'
+      line: "Ciphers aes128-ctr,aes192-ctr,aes256-ctr"
+    notify: restart sshd
+    
+  - name: 7.5.3.4 Configurar parámetros de SSH
+    lineinfile:
+      state: present
+      dest: /etc/ssh/sshd_config
+      regexp: '^ClientAliveInterval'
+      line: "ClientAliveInterval 1800"
+    notify: restart sshd
+    
+  - name: 7.5.3.4 Configurar parámetros de SSH
+    lineinfile:
+      state: present
+      dest: /etc/ssh/sshd_config
+      regexp: '^ClientAliveCountMax'
+      line: "ClientAliveCountMax 0"
+    notify: restart sshd
+    
+  - name: 7.5.3.4 Configurar parámetros de SSH
+    lineinfile:
+      state: present
+      dest: /etc/ssh/sshd_config
+      regexp: '^Banner'
+      line: 'Banner /etc/issue.net'
+    notify: restart sshd
+    
 #7.5.4 Configurar PAM
-#7.5.4.1 Configurar los parámetros de requerimiento de contraseña
+
+  - name: 7.5.4.1 Configurar los parámetros de requerimiento de contraseña
+    lineinfile:
+      state: present
+      dest: /etc/security/pwquality.conf
+      regexp: '^{{ item.key }}'
+      line: '{{ item.key }} = {{ item.value }}'
+    with_items:
+      - { key: 'minlen',  value: '8' }
+      - { key: 'dcredit', value: '-2' }
+      - { key: 'ucredit', value: '-1' }
+      - { key: 'ocredit', value: '-1' }
+      - { key: 'lcredit', value: '-1' }
+      - { key: 'mindiff', value: '3' }
+      - { key: 'maxrepeats', value: '2' } 
+      
 #7.5.4.2 Bloqueo por intentos fallidos de contraseñas
-#7.5.4.3 Limitar la historia de passwords
-#7.5.4.4 Upgrade del algoritmo de Password Hashing a SHA-512
+
+  - name: 7.5.4.3 Limitar la historia de passwords
+    lineinfile:
+      state: present
+      dest: /etc/pam.d/system-auth
+      regexp: '^password required pam_pwhistory.so'
+      line: "password required pam_pwhistory.so use_authtok remember=12"
+
+  - name: 7.5.4.4 Upgrade del algoritmo de Password Hashing a SHA-512
+    command: authconfig --passalgo=sha512 --update
+    changed_when: no
+    failed_when: no
+    
 #7.5.5 Cuentas de usuarios y su entorno (environment)
 #7.5.5.1 Configurar los parámetros de la suite Shadow Password (/etc/login.defs)
-#7.5.5.1.1 Configurar Password Expiration Days
-#7.5.5.1.2 Configurar cambio de Password a un mínimo número de días
-#7.5.5.1.3 Configurar el UID en useradd para valores mayores de 1000
+
+  - name: 7.5.5.1.1 Configurar Password Expiration Days
+    lineinfile:
+      state: present
+      dest: /etc/login.defs
+      regexp: '^PASS_MAX_DAYS'
+      line: "PASS_MAX_DAYS   30"
+        
+  - name: 7.5.5.1.2 Configurar cambio de Password a un mínimo número de días
+    lineinfile:
+      state: present
+      dest: /etc/login.defs
+      regexp: '^PASS_MIN_DAYS'
+      line: "PASS_MIN_DAYS   7"
+
+  - name: 7.5.5.1.3 Configurar el UID en useradd para valores mayores de 1000
+    lineinfile:
+      state: present
+      dest: /etc/login.defs
+      regexp: '^UID_MIN'
+      line: "UID_MIN                  1000"
+        
+  - name: 77.5.5.1.3 Configurar el UID en useradd para valores mayores de 1000
+    lineinfile:
+      state: present
+      dest: /etc/login.defs
+      regexp: '^UID_MAX'
+      line: "UID_MAX                 60000"
+      
 #7.5.5.2 Deshabilitar cuentas de sistema que no se utilizan.
-#7.5.5.3 Verificar que solo root tenga el UID 0
+
+  - name: 7.5.5.3 Verificar que solo root tenga el UID 0
+    shell: "cat /etc/passwd | awk -F: '($3 == 0 && $1 != \"root\") {i++;print $1 } END {exit i}'"
+    register: uid_zero_accounts_except_root
+    failed_when: uid_zero_accounts_except_root.stdout_lines | length > 0
+  
