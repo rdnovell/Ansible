@@ -3,13 +3,36 @@
 # tasks file
 
 #7.4 Registro y Auditoria (Logging and Auditing)
+
 #7.4.1 Configurar System Accounting (auditd)
+
 #7.4.1.1 Configurar Data Retention
-#7.4.1.2 Configurar el tamaño de almacenamiento del registro de auditoria
-#7.4.1.3 Habilitar el servicio auditd
-#7.4.1.4 Asegurarse que los eventos que modifican la información de los archivos más
-#7.4.2 Configurar rsyslog
-#7.4.2.1 Asegurarse que el servicio rsyslog esta activado
-#7.4.2.2 Configuración del rsyslog.conf
-#7.4.2.3 Asegurarse que rsyslog esta configurado para enviar logs a SIEM
+
+  - name: 7.4.1.2 Configurar el tamaño de almacenamiento del registro de auditoria
+    lineinfile:
+      dest: /etc/audit/auditd.conf
+      regexp: "^max_log_file( |=)"
+      line: "max_log_file = 100"
+      state: present
+    notify: restart auditd
+    
+  - name: 7.4.1.3 Habilitar el servicio auditd
+    service:
+      name: auditd
+      state: started
+      enabled: yes
+      
+  - name: 7.4.1.4 Asegurarse que los eventos que modifican la información de los archivos más importantes del sistema están siendo auditados
+    template:
+      src: templates/audit.rules.j2
+      dest: /etc/audit/audit.rules
+      owner: root
+      group: root
+      mode: 0600
+    notify: restart auditd
+    
+#7.4.2 Configurar rsyslog. No lo usamos
+#7.4.2.1 Asegurarse que el servicio rsyslog esta activado. No lo usamos
+#7.4.2.2 Configuración del rsyslog.conf. No lo usamos
+#7.4.2.3 Asegurarse que rsyslog esta configurado para enviar logs a SIEM. No lo usamos
 #7.4.3 Configurar AUTH.DEBUG

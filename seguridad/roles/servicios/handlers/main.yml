@@ -20,4 +20,9 @@
   - name: restart sshd
     service:
       name: sshd
-      state: restarted                  
+      state: restarted
+      
+  - name: restart auditd
+    service:
+      name: auditd
+      state: restarted      

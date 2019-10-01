@@ -95,7 +95,6 @@
     command: gpg --quiet --with-fingerprint /etc/pki/rpm-gpg/RPM-GPG-KEY-{{ ansible_distribution|lower }}-release
  
   - name: 7.1.2.4 Obtener actualizaciónes de paquetes con yum
-  - name: check for updates (yum)
     yum: 
       list:updates 
       update_cache:true
