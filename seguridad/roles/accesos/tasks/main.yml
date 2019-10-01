@@ -67,7 +67,6 @@
   - name: 7.5.3.3 Asegurarse que están configurados los permisos en /etc/ssh/sshd_config
     file:
       dest: /etc/ssh/sshd_config
-      state: directory
       owner: root
       group: root
       mode: 0600
