@@ -10,3 +10,11 @@
       when: ansible_os_family == "RedHat" and ansible_distribution_major_version == '7'
     - role: servicios
       when: ansible_os_family == "RedHat" and ansible_distribution_major_version == '7'      
+    - role: red
+      when: ansible_os_family == "RedHat" and ansible_distribution_major_version == '7'   
+    - role: auditoria
+      when: ansible_os_family == "RedHat" and ansible_distribution_major_version == '7'  
+    - role: accesos
+      when: ansible_os_family == "RedHat" and ansible_distribution_major_version == '7'  
+    - role: mantenimiento
+      when: ansible_os_family == "RedHat" and ansible_distribution_major_version == '7'        
