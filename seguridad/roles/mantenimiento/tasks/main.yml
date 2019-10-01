@@ -1,0 +1,12 @@
+---
+
+# tasks file
+
+#7.6 Mantenimiento de Sistema
+#7.6.1 System File Permissions
+#7.6.1.2 Verificar los permisos del archivo /etc/passwd
+#7.6.1.3 Verificar los permisos del archivo /etc/shadow
+#7.6.1.4 Verificar los permisos del archivo /etc/group
+#7.6.1.5 Verificar los permisos del archivo /etc/gshadow
+#7.6.2 Comentarios de configuración de usuarios y grupos.
+#7.6.2.1 Asegurarse que los campos de password no están en blanco

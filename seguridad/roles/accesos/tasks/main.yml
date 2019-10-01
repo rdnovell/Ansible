@@ -1,0 +1,29 @@
+---
+
+# tasks file
+
+#7.5 System Access, Authentication and Authorization
+#7.5.1 Configuración de History Extendido
+#7.5.2 Configurar Cron
+#7.5.2.1 Asegurarse que el servicio de Cron esta activado
+#7.5.2.2 Asegurarse que están configurados los permisos en /etc/crontab
+#7.5.2.3 Asegurarse que están configurados los permisos en /etc/cron.hourly
+#7.5.2.4 Asegurarse que están configurados los permisos en /etc/cron.daily
+#7.5.2.5 Asegurarse que están configurados los permisos en /etc/cron.weekly
+#7.5.2.6 Asegurarse que están configurados los permisos en /etc/cron.monthly
+#7.5.2.7 Asegurarse que están configurados los permisos en /etc/cron.d
+#7.5.3 Configurar SSH
+#7.5.3.3 Asegurarse que están configurados los permisos en /etc/ssh/sshd_config
+#7.5.3.4 Configurar parámetros de SSH
+#7.5.4 Configurar PAM
+#7.5.4.1 Configurar los parámetros de requerimiento de contraseña
+#7.5.4.2 Bloqueo por intentos fallidos de contraseñas
+#7.5.4.3 Limitar la historia de passwords
+#7.5.4.4 Upgrade del algoritmo de Password Hashing a SHA-512
+#7.5.5 Cuentas de usuarios y su entorno (environment)
+#7.5.5.1 Configurar los parámetros de la suite Shadow Password (/etc/login.defs)
+#7.5.5.1.1 Configurar Password Expiration Days
+#7.5.5.1.2 Configurar cambio de Password a un mínimo número de días
+#7.5.5.1.3 Configurar el UID en useradd para valores mayores de 1000
+#7.5.5.2 Deshabilitar cuentas de sistema que no se utilizan.
+#7.5.5.3 Verificar que solo root tenga el UID 0
