@@ -39,4 +39,4 @@
   - name: 7.6.2.1 Asegurarse que los campos de password no están en blanco
     shell: "cat /etc/shadow | awk -F: '($2 == \"\" ) {j++;print $1; } END {exit j}'"
     register: empty_password_accounts
-    failed_when: "{{ empty_password_accounts|length }}" > 0
+    failed_when: empty_password_accounts | length > 0
