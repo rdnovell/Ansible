@@ -63,7 +63,15 @@
       mode: 0600
         
 #7.5.3 Configurar SSH
-#7.5.3.3 Asegurarse que están configurados los permisos en /etc/ssh/sshd_config
+
+  - name: 7.5.3.3 Asegurarse que están configurados los permisos en /etc/ssh/sshd_config
+    file:
+      dest: /etc/ssh/sshd_config
+      state: directory
+      owner: root
+      group: root
+      mode: 0600
+      
 #7.5.3.4 Configurar parámetros de SSH
 #7.5.4 Configurar PAM
 #7.5.4.1 Configurar los parámetros de requerimiento de contraseña
