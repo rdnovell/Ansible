@@ -21,11 +21,12 @@
     service:
       name: sshd
       state: restarted
-      
+
   - name: restart auditd
-    service:
-      name: auditd
-      state: restarted      
+    command: /sbin/service auditd restart
+    changed_when: no
+    check_mode: no
+    failed_when: no    
       
   - name: sysctl flush ipv4 route table
     become: yes
