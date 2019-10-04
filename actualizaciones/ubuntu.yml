@@ -3,6 +3,10 @@
 
 - name: actualizacion de ubuntu
   hosts: all
+  environment: 
+    http_proxy: http://10.9.35.51:3128
+    https_proxy: https://10.9.35.51:3128
+    
   tasks:
     - name: Update apt cache
       apt: 
