@@ -11,6 +11,7 @@
     - name: Update apt cache
       apt: 
         update_cache: yes
+        force_apt_get: True
 
     - name: Upgrade packages
       apt: 
