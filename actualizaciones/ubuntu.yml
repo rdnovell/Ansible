@@ -20,20 +20,22 @@
       when: '{{hostvars[inventory_hostname].requiere_hold}}'
       
     - name: Holdear paquetes  
-      command: echo "{{ item }}" | dpkg --set-selections
+#      command: echo "{{ item }}" | dpkg --set-selections
+      command: echo {{ item }}
       with_items:
-        - "libdbd-mysql-perl hold"
-        - "libmysqlclient18:amd64 hold"
-        - "libmysqlclient20:amd64 hold"
-        - "mysql-client-5.6 hold"
-        - "mysql-client-core-5.6 hold"
-        - "mysql-common hold"
-        - "mysql-server hold"
-        - "mysql-server-5.6 hold"
-        - "mysql-server-core-5.6 hold"
-        - "php-mysql hold"
-        - "php7.0-mysql hold"
-        - "python-mysqldb hold"
+        - hola
+#        - "libdbd-mysql-perl hold"
+#        - "libmysqlclient18:amd64 hold"
+#        - "libmysqlclient20:amd64 hold"
+#        - "mysql-client-5.6 hold"
+#        - "mysql-client-core-5.6 hold"
+#        - "mysql-common hold"
+#        - "mysql-server hold"
+#        - "mysql-server-5.6 hold"
+#        - "mysql-server-core-5.6 hold"
+#        - "php-mysql hold"
+#        - "php7.0-mysql hold"
+#        - "python-mysqldb hold"
       when: '{{hostvars[inventory_hostname].requiere_hold}}'
   
     - name: Upgrade packages
