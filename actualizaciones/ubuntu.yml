@@ -34,7 +34,7 @@
         - "php-mysql hold"
         - "php7.0-mysql hold"
         - "python-mysqldb hold"
-        when: "{{hostvars[inventory_hostname].requiere_hold}}"
+      when: '{{hostvars[inventory_hostname].requiere_hold}}'
   
     - name: Upgrade packages
       apt: 
