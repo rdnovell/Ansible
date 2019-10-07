@@ -24,7 +24,7 @@
       command: echo {{ item }}
       with_items:
         - hola
-#        - "libdbd-mysql-perl hold"
+        - libdbd-mysql-perl hold
 #        - "libmysqlclient18:amd64 hold"
 #        - "libmysqlclient20:amd64 hold"
 #        - "mysql-client-5.6 hold"
@@ -36,7 +36,7 @@
 #        - "php-mysql hold"
 #        - "php7.0-mysql hold"
 #        - "python-mysqldb hold"
-      when: '{{hostvars[inventory_hostname].requiere_hold}}'
+      when: hostvars[inventory_hostname].requiere_hold.exists == True
   
     - name: Upgrade packages
       apt: 
