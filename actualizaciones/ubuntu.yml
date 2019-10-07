@@ -12,7 +12,6 @@
       apt: 
         update_cache: yes
         force_apt_get: True
-      ignore_errors: yes
       
     - name: Forzar hold paquetes  
       command: echo "{{ item }}" | dpkg --set-selections
