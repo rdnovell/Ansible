@@ -85,3 +85,32 @@
         - libsmi*686
         - libXrender-devel*i686
       state: present      
+
+  - name: Instalar kmod ASM
+    yum:
+      name: kmod-oracleasm
+      state: present
+      
+  - name: Instalar grupos
+    yum:
+      name:
+        - /export/act/tzdata-2019a-1.el7.noarch.rpm 
+        - /export/act/tzdata-java-2019a-1.el7.noarch.rpm
+        - /export/act/sharutils-4.13.3-8.el7.x86_64.rpm 
+        - /export/act/omping-0.0.4-6.el7.x86_64.rpm 
+        - /export/act/compat-libstdc++-33-3.2.3-72.el7.i686.rpm
+        - /export/act/compat-libstdc++-33-3.2.3-72.el7.x86_64.rpm
+        - /export/act/librabbitmq-0.8.0-2.el7.x86_64.rpm
+        - /export/act/libnet-1.1.6-7.el7.x86_64.rpm
+        - /export/act/ivykis-0.36.2-2.el7.x86_64.rpm
+        - /export/act/syslog-ng-3.21.1-3.el7.x86_64.rpm
+        - /export/act/lgtoclnt-9.2.1.0-1.x86_64.rpm
+        - /export/act/oracleasm-debuginfo-2.0.8-22.1.el7_6.x86_64.rpm
+        - /export/act/oracleasmlib-2.0.12-1.el7.x86_64.rpm
+        - /export/act/oracleasm-support-2.1.11-2.el7.x86_64.rpm
+        - /export/act/pcp-pmda-oracle-4.1.0-4.el7.x86_64.rpm
+        - /export/act/tuned-profiles-oracle-2.10.0-6.el7_6.3.noarch.rpm
+      state: present   
+
+      
+      

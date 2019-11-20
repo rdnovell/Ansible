@@ -150,3 +150,8 @@
 
   - name: Arrancar en modo multi
     command: systemctl set-default multi-user.target
+
+  - name: enable selinux
+    selinux:
+      policy=targeted
+      state=disabled    
