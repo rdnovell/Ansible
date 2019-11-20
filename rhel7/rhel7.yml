@@ -1,0 +1,18 @@
+---
+# Este playbook aplica la configuracion de rhel7 para BEBD.
+
+- name: rhel7
+  hosts: all
+  become: true
+
+  roles:
+    - role: repos
+      when: ansible_os_family == "RedHat" and ansible_distribution_major_version == '7'
+    - role: usuarios
+      when: ansible_os_family == "RedHat" and ansible_distribution_major_version == '7'  
+    - role: paquetes
+      when: ansible_os_family == "RedHat" and ansible_distribution_major_version == '7'      
+    - role: archivos
+      when: ansible_os_family == "RedHat" and ansible_distribution_major_version == '7'  
+    - role: servicios
+      when: ansible_os_family == "RedHat" and ansible_distribution_major_version == '7'   

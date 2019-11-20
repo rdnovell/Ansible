@@ -1,0 +1,22 @@
+rm -rf /etc/ssh/;
+rm -rf /etc/ntp.conf;
+rm -rf /etc/resolv.conf;
+rm -rf /etc/hosts;
+rm -rf /etc/logrotate.conf;
+rm -rf /etc/logrotate.d/syslog;
+rm -rf /etc/motd;
+rm -rf /etc/issue;
+rm -rf /etc/issue.;net
+rm -rf /etc/snmp/snmpd;.conf
+
+cp -prf /export/etc/ntp.conf /etc/ntp.conf;
+cp -prf /export/etc/resolv.conf /etc/resolv.conf;
+cp -prf /export/etc/ssh/ /etc/ssh/;
+cp -prf /export/etc/hosts /etc/hosts;
+cp -prf /export/etc/logrotate.conf /etc/logrotate.conf;
+cp -prf /export/etc/logrotate.d/syslog /etc/logrotate.d/syslog;
+cp -prf /export/etc/sysctl.conf /etc/sysctl.conf;
+cp -prf /export/etc/motd /etc/motd;
+cp -prf /export/etc/issue /etc/issue;
+cp -prf /export/etc/issue.net /etc/issue.net;
+cp -prf /export/etc/snmp/snmpd.conf /etc/snmp/;

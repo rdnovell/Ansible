@@ -1,0 +1,87 @@
+---
+
+# tasks file
+
+  - name: Instalar mods
+    command: yum install --setopt=group_package_types=mandatory,default,optional @additional-devel @base @core @compat-libraries @debugging @hardware-monitoring @legacy-unix @network-file-system-client @network-tools  @performance @platform-devel @system-admin-tools @system-management
+    changed_when: no
+    failed_when: no      
+      
+  - name: Instalar grupos
+    yum:
+      name:
+        - "@^development"
+        - "@^file-server"
+        - "@^java-platform"
+        - "@^large-systems"
+        - "@^legacy-x"
+        - "@^mail-server"
+        - "@^remote-system-management"
+        - "@^security-tools"
+        - "@^server-product"
+        - "@^web-server"
+        - "@^x11"
+        - "@^gnome-desktop"
+      state: present      
+
+  - name: Instalar paquetes
+    yum:
+      name:
+        - systool
+        - sysfsutils
+        - elfutils-libelf-devel-0.125
+        - elfutils-libelf-devel
+        - glibc-headers
+        - ntp
+        - kmod
+        - perl
+        - binutils
+        - ksh
+        - compat-libcap1
+        - compat-libstdc++-33
+        - gcc
+        - gcc-c++
+        - glibc-devel
+        - libgcc
+        - libstdc++
+        - libstdc++-devel
+        - libXext
+        - libXtst
+        - libxcb
+        - libXmu
+        - libXxf86dga
+        - libX11
+        - libXau
+        - libaio
+        - libaio-devel
+        - libdmx
+        - glibc
+        - make
+        - sysstat
+        - xorg-x11-utils
+        - xorg-x11-xauth
+        - libXv
+        - libXi
+        - libXt
+        - libXxf86misc
+        - libXxf86vm
+        - perl-Switch.noarch
+        - psmisc
+        - unzip
+        - ksh
+        - tigervnc
+        - vinagre
+        - ftp
+        - xterm
+        - sendmail
+        - compat-libcap*686
+        - compat-db*686
+        - control-center*686
+        - glibc-devel*686
+        - libaio*686
+        - libaio-devel*686
+        - libstdc++*686
+        - openssl098*686
+        - libsmi*686
+        - libXrender-devel*i686
+      state: present      

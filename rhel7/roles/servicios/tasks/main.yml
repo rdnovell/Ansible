@@ -1,0 +1,152 @@
+---
+
+# tasks file
+
+  - name: Arrancar xinetd
+    service:
+      name: xinetd
+      state: started
+      enabled: yes
+      
+  - name: Arrancar daytime
+    command: /usr/sbin/chkconfig daytime-stream on      
+      
+  - name: Arrancar xinetd
+    service:
+      name: xinetd
+      state: started
+      enabled: yes
+
+  - name: Reiniciar syslog-ng
+    service:
+      name: syslog-ng
+      state: restarted      
+      enabled: yes
+
+  - name: Reiniciar ntpd
+    service:
+      name: ntpd
+      state: restarted      
+      enabled: yes
+
+  - name: Reiniciar snmpd
+    service:
+      name: snmpd
+      state: restarted      
+      enabled: yes
+
+  - name: Reiniciar sshd
+    service:
+      name: sshd
+      state: restarted      
+      enabled: yes
+
+  - name: Reiniciar networker
+    service:
+      name: networker
+      state: restarted      
+      enabled: yes
+
+  - name: Apagar NetworkManager
+    service:
+      name: NetworkManager
+      state: stopped
+      enabled: no     
+
+  - name: Apagar firewalld
+    service:
+      name: firewalld
+      state: stopped
+      enabled: no   
+      
+  - name: Apagar acpid
+    service:
+      name: acpid
+      state: stopped
+      enabled: no  
+      
+  - name: Apagar atd
+    service:
+      name: atd
+      state: stopped
+      enabled: no 
+      
+  - name: Apagar iscsi
+    service:
+      name: iscsi
+      state: stopped
+      enabled: no    
+      
+  - name: Apagar rhnsd
+    service:
+      name: rhnsd
+      state: stopped
+      enabled: no    
+      
+  - name: Apagar iscsid
+    service:
+      name: iscsid
+      state: stopped
+      enabled: no          
+
+  - name: Apagar rhsmcertd
+    service:
+      name: rhsmcertd
+      state: stopped
+      enabled: no 
+      
+  - name: Apagar cups
+    service:
+      name: cups
+      state: stopped
+      enabled: no    
+      
+  - name: Apagar kdump
+    service:
+      name: kdump
+      state: stopped
+      enabled: no    
+      
+  - name: Apagar sendmail
+    service:
+      name: sendmail
+      state: stopped
+      enabled: no   
+
+  - name: Apagar libvirtd
+    service:
+      name: libvirtd
+      state: stopped
+      enabled: no 
+      
+  - name: Apagar fcoe
+    service:
+      name: fcoe
+      state: stopped
+      enabled: no    
+      
+  - name: Apagar libvirt-guests
+    service:
+      name: libvirt-guests
+      state: stopped
+      enabled: no    
+      
+  - name: Apagar chronyd
+    service:
+      name: chronyd
+      state: stopped
+      enabled: no      
+      
+  - name: Apagar httpd
+    service:
+      name: httpd
+      state: stopped
+      enabled: no        
+            
+  - name: Reiniciar red
+    service:
+      name: network
+      state: restarted     
+
+  - name: Arrancar en modo multi
+    command: systemctl set-default multi-user.target

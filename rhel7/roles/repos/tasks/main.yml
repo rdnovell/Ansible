@@ -1,0 +1,30 @@
+---
+
+# tasks file
+
+  - name: Congiguracion de repos
+    command: rm -f /etc/yum.repos.d/*
+    changed_when: no
+    failed_when: no
+   
+  - name: Copiar repo
+    template:
+      src: templates/redhat.repo.j2
+      dest: /etc/yum.repos.d/redhat.repo
+      owner: root
+      group: root
+  
+  - name: Copiar pem
+    template:
+      src: templates/2149283879214460467.pem.j2
+      dest: /etc/pki/entitlement/2149283879214460467.pem.j2
+      owner: root
+      group: root
+
+  - name: Copiar key
+    template:
+      src: templates/2149283879214460467-key.pem.j2
+      dest: /etc/pki/entitlement/2149283879214460467-key.pem
+      owner: root
+      group: root
+      

@@ -1,0 +1,13 @@
+---
+
+# tasks file
+
+  - name: Copiar script de usuarios
+    template:
+      src: templates/script-user.sh.j2
+      dest: /etc/act/script-user.sh
+      owner: root
+      group: root
+      
+  - name: Creacion de usuarios
+    script: /etc/act/script-user.sh
